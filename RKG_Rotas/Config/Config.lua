@@ -1,26 +1,24 @@
 Config = {
     ["Commands"] = {
-        ["Rota"] = "rotas", -- Primeiro argumento do comando.
-        ["IniciarRota"] = "iniciar", -- Segundo argumento do comando (Para Iniciar a Rota).
-        ["SairRota"] = "sair", -- Segundo argumento do comando (Para sair da Rota).
+        ["Rota"] = "rotas", -- Iniciar a Rota
     },
     ["Permissions"] = {
-        ["Bennys"] = "Bennys", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["SportRace"] = "SportRace", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["Tequila"] = "Tequila", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["Vanilla"] = "Vanilla", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["Madrazo"] = "Madrazo", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["CosaNostra"] = "CosaNostra", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["TheLost"] = "TheLost", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["YellowJack"] = "YellowJack", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["Elements"] = "Elements", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["Furious"] = "Furious", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["Aztecas"] = "Aztecas", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["Incas"] = "Incas", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["Barragem"] = "Barragem", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["SandyShores"] = "SandyShores", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["Catavento"] = "Catavento", -- Permissao. (Nome-Ilustrativo,Permissao).
-        ["Observatorio"] = "Observatorio", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["Bennys"] = "admin.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["SportRace"] = "sportrace.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["Tequila"] = "tequila.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["Vanilla"] = "vanilla.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["Madrazo"] = "madrazo.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["CosaNostra"] = "cosanostra.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["TheLost"] = "thelost.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["YellowJack"] = "yellowJack.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["Elements"] = "elements.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["Furious"] = "furious.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["Aztecas"] = "aztecas.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["Incas"] = "incas.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["Barragem"] = "barragem.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["SandyShores"] = "sandyshores.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["Catavento"] = "catavento.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
+        ["Observatorio"] = "observatorio.permissao", -- Permissao. (Nome-Ilustrativo,Permissao).
     },
     ["Locates"] = {
         ["Bennys"] = { -200.8,-1318.24,31.09 }, -- Locais aonde porderá iniciar a Rota. ["Nome"] = {CDS}.
@@ -31,7 +29,7 @@ Config = {
         ["CosaNostra"] = { -1866.1,2061.25,135.44 }, -- Locais aonde porderá iniciar a Rota. ["Nome"] = {CDS}.
         ["TheLost"] = { 987.85,-98.1,74.85 }, -- Locais aonde porderá iniciar a Rota. ["Nome"] = {CDS}.
         ["YellowJack"] = { 1986.28,3051.2,47.22 }, -- Locais aonde porderá iniciar a Rota. ["Nome"] = {CDS}.
-        ["Elements"] = { 730.07,-1078.66,22.17,241.16 }, -- Locais aonde porderá iniciar a Rota. ["Nome"] = {CDS}.
+        ["Elements"] = { 730.07,-1078.66,22.17 }, -- Locais aonde porderá iniciar a Rota. ["Nome"] = {CDS}.
         ["Furious"] = { 479.3,-1317.6,29.21 }, -- Locais aonde porderá iniciar a Rota. ["Nome"] = {CDS}.
         ["Aztecas"] = { -596.07,-1618.14,33.02 }, -- Locais aonde porderá iniciar a Rota. ["Nome"] = {CDS}.
         ["Incas"] = { 589.65,-3277.48,6.07 }, -- Locais aonde porderá iniciar a Rota. ["Nome"] = {CDS}.
@@ -94,7 +92,7 @@ Config = {
             ["Quantity"] = {3,10}, -- Quantidade que virá, ao Apertar E no Blip (Minimo,Maximo).
         },
     },
-    ["Blip-Routes"] = {
+    ["BlipRoutes"] = {
         {1557.9,-1679.89,90.96}, -- CDS dos Blips, Após ter iniciado a Rota.
         {1753.83,-1577.54,112.62}, -- CDS dos Blips, Após ter iniciado a Rota.
         {1758.65,-1659.98,112.73}, -- CDS dos Blips, Após ter iniciado a Rota.
@@ -127,7 +125,7 @@ Config = {
         {1508.2,-2118.84,76.54} -- CDS dos Blips, Após ter iniciado a Rota.
     },
     ["Notify"] = {
-        ["NO-Permission"] = "Você Não tem permissao.", -- Notify para Permissao Negada.
+        ["NOPermission"] = "Você Não tem permissao.", -- Notify para Permissao Negada.
         ["InService"] = "Você ja está em serviço!", -- Notify para avisar que ja está em serviço.
         ["StartRoute"] = "Você Iniciou sua Rota.", -- Notify para avisar que iniciou a Rota.
         ["StopService"] = "Você saiu de serviço.", -- Notify para saida de serviço.

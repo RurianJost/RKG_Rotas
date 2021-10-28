@@ -7,41 +7,37 @@ Tunnel.bindInterface(GetCurrentResourceName(),oRP)
 vSERVER = Tunnel.getInterface(GetCurrentResourceName())
 
 local blip = nil
-local inService = nil
+local inService = false
 local Position = 1
 local timeSeconds = 0
-local BlipRotas = Config["Blip-Routes"]
+local BlipRotas = Config.BlipRoutes
 
-RegisterCommand(Config["Commands"]["Rota"],function(source,args,rawCommand)
+RegisterCommand(Config.Commands.Rota,function(source,args,rawCommand)
     local ped = PlayerPedId()
     local coords = GetEntityCoords(ped)
-    if args[1] == Config["Commands"]["IniciarRota"] then
-        if vSERVER.CheckPerm() then
-            if not inService then
-                for k,v in pairs(Config["Locates"]) do
-                    local distance = #(coords - vector3(v[1],v[2],v[3]))
-                    if distance <= Config["Distance"][1] then
-                        StartThreadService()
-                        StartThreadTimeSeconds()
-                        inService = true
-                        MakeBlipsPosition(BlipRotas,Position)
-                        TriggerEvent("Notify","sucesso",Config["Notify"]["StartRoute"],5000)
-                    end
-                end
-            else
-                TriggerEvent("Notify","aviso",Config["Notify"]["InService"],5000)
-            end
-        else
-            TriggerEvent("Notify","aviso",Config["Notify"]["NO-Permission"],5000)
-        end
-    end
-    if args[1] == Config["Commands"]["SairRota"] then
+    if inService then
         inService = false
-        TriggerEvent("Notify","sucesso",Config["Notify"]["StopService"],5000)
+        TriggerEvent("Notify","sucesso",Config.Notify.StopService,5000)
 		if DoesBlipExist(blip) then
 			RemoveBlip(blip)
 			blip = nil
-		end
+		end 
+    else
+        if vSERVER.CheckPerm() then
+            for k,v in pairs(Config.Locates) do
+                local distance = #(coords - vector3(v[1],v[2],v[3]))
+                if distance <= Config.Distance[1] then
+                    StartThreadService()
+                    StartThreadTimeSeconds()
+                    inService = true
+                    Position = 1
+                    MakeBlipsPosition(BlipRotas,Position)
+                    TriggerEvent("Notify","sucesso",Config.Notify.StartRoute,5000)
+                end
+            end
+        else
+            TriggerEvent("Notify","aviso",Config.Notify.NOPermission,5000)
+        end
     end
 end)
 
@@ -67,7 +63,7 @@ function StartThreadService()
                                 vSERVER.paymentMethod(false)
                             end
                             TriggerEvent("cancelando",true)
-                            vRP._playAnim(false,{"amb@prop_human_parking_meter@female@idle_a","idle_a_female"},true)
+                            vRP._playAnim(false,{{"amb@prop_human_parking_meter@female@idle_a","idle_a_female"}},true)
                             Citizen.Wait(2000)
                             TriggerEvent("cancelando",false)
                             vRP.removeObjects()
