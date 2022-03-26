@@ -1,4 +1,5 @@
 Config = {
+    ["Creative"] = false, -- se sua base for 'creative' deixe true, caso não seje deixe false.
     ["Commands"] = {
         ["Rota"] = "rotas", -- Iniciar a Rota
     },

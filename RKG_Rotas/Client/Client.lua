@@ -1,22 +1,22 @@
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
-vRP = Proxy.getInterface("vRP")
+local vRP = Proxy.getInterface("vRP")
 
-oRP = {}
+local oRP = {}
 Tunnel.bindInterface(GetCurrentResourceName(),oRP)
-vSERVER = Tunnel.getInterface(GetCurrentResourceName())
+local vSERVER = Tunnel.getInterface(GetCurrentResourceName())
 
 local blip = nil
-local inService = false
-local Position = 1
-local timeSeconds = 0
-local BlipRotas = Config.BlipRoutes
+local in_service = false
+local position = 1
+local time_seconds = 0
+local blip_rotas = Config.BlipRoutes
 
 RegisterCommand(Config.Commands.Rota,function(source,args,rawCommand)
     local ped = PlayerPedId()
     local coords = GetEntityCoords(ped)
-    if inService then
-        inService = false
+    if in_service then
+        in_service = false
         TriggerEvent("Notify","sucesso",Config.Notify.StopService,5000)
 		if DoesBlipExist(blip) then
 			RemoveBlip(blip)
@@ -29,9 +29,9 @@ RegisterCommand(Config.Commands.Rota,function(source,args,rawCommand)
                 if distance <= Config.Distance[1] then
                     StartThreadService()
                     StartThreadTimeSeconds()
-                    inService = true
-                    Position = 1
-                    MakeBlipsPosition(BlipRotas,Position)
+                    in_service = true
+                    position = 1
+                    MakeBlipsPosition(blip_rotas,position)
                     TriggerEvent("Notify","sucesso",Config.Notify.StartRoute,5000)
                 end
             end
@@ -45,29 +45,33 @@ function StartThreadService()
 	Citizen.CreateThread(function()
 		while true do
 			local timeDistance = 500
-			if inService then
+			if in_service then
 				local ped = PlayerPedId()
                 local coordsPed = GetEntityCoords(ped)
-                local distance = #(coordsPed - vector3(BlipRotas[Position][1],BlipRotas[Position][2],BlipRotas[Position][3]))
+                local distance = #(coordsPed - vector3(blip_rotas[position][1],blip_rotas[position][2],blip_rotas[position][3]))
                 if distance <= 10 then
                     timeDistance = 4
-                    DrawMarker(21,BlipRotas[Position][1],BlipRotas[Position][2],BlipRotas[Position][3]-0.6,0,0,0,0.0,0,0,0.5,0.5,0.4,255,0,0,50,0,0,0,1)
+                    DrawMarker(21,blip_rotas[position][1],blip_rotas[position][2],blip_rotas[position][3]-0.6,0,0,0,0.0,0,0,0.5,0.5,0.4,255,0,0,50,0,0,0,1)
                     if distance <= 15 then
-                        if IsControlJustPressed(1,38) and timeSeconds <= 0 then
-                            timeSeconds = 2
-                            if Position == #BlipRotas then
-                                Position = 1
-                                vSERVER.paymentMethod(true)
+                        if IsControlJustPressed(1,38) and time_seconds <= 0 then
+                            time_seconds = 2
+                            if position == #blip_rotas then
+                                position = 1
+                                vSERVER.paymentMethod()
                             else
-                                Position = Position + 1
-                                vSERVER.paymentMethod(false)
+                                position = position + 1
+                                vSERVER.paymentMethod()
                             end
                             TriggerEvent("cancelando",true)
-                            vRP._playAnim(false,{{"amb@prop_human_parking_meter@female@idle_a","idle_a_female"}},true)
+                            if Config.Creative then
+                                vRP._playAnim(false,{"amb@prop_human_parking_meter@female@idle_a","idle_a_female"},true)
+                            else
+                                vRP._playAnim(false,{{"amb@prop_human_parking_meter@female@idle_a","idle_a_female"}},true)
+                            end
                             Citizen.Wait(2000)
                             TriggerEvent("cancelando",false)
                             vRP.removeObjects()
-                            MakeBlipsPosition(BlipRotas,Position)
+                            MakeBlipsPosition(blip_rotas,position)
                         end
                     end
                 end
@@ -80,22 +84,22 @@ end
 function StartThreadTimeSeconds()
 	Citizen.CreateThread(function()
 		while true do
-			if timeSeconds > 0 then
-				timeSeconds = timeSeconds - 1
+			if time_seconds > 0 then
+				time_seconds = time_seconds - 1
 			end
 			Citizen.Wait(1000)
 		end
 	end)
 end
 
-function MakeBlipsPosition(BlipRotas,Position)
+function MakeBlipsPosition(blip_rotas,position)
 	if DoesBlipExist(blip) then
 		RemoveBlip(blip)
 		blip = nil
 	end
 
 	if not DoesBlipExist(blip) then
-		blip = AddBlipForCoord(BlipRotas[Position][1],BlipRotas[Position][2],BlipRotas[Position][3],50.0)
+		blip = AddBlipForCoord(blip_rotas[position][1],blip_rotas[position][2],blip_rotas[position][3],50.0)
 		SetBlipSprite(blip,1)
         SetBlipColour(blip,5)
         SetBlipScale(blip,0.4)

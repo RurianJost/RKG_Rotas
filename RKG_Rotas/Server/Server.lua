@@ -1,11 +1,11 @@
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
-vRP = Proxy.getInterface("vRP")
-vRPclient = Tunnel.getInterface("vRP")
+local vRP = Proxy.getInterface("vRP")
+local vRPclient = Tunnel.getInterface("vRP")
 
-oRP = {}
+local oRP = {}
 Tunnel.bindInterface(GetCurrentResourceName(),oRP)
-vCLIENT = Tunnel.getInterface(GetCurrentResourceName())
+local vCLIENT = Tunnel.getInterface(GetCurrentResourceName())
 
 function oRP.CheckPerm()
 	local source = source
@@ -21,10 +21,17 @@ function oRP.paymentMethod(status)
 	local source = source
 	local user_id = vRP.getUserId(source)
 	if user_id then
-		if vRP.getInventoryWeight(user_id) + 1 > vRP.getInventoryMaxWeight(user_id) then
-            TriggerClientEvent("Notify",source,"negado",Config.Notify.BackpackFull,5000)
-            return
-        end
+		if Config.Creative then
+			if vRP.computeInvWeight(user_id) + 1 > vRP.getBackpack(user_id) then
+				TriggerClientEvent("Notify",source,"negado",Config.Notify.BackpackFull,5000)
+				return
+			end
+		else
+			if vRP.getInventoryWeight(user_id) + 1 > vRP.getInventoryMaxWeight(user_id) then
+				TriggerClientEvent("Notify",source,"negado",Config.Notify.BackpackFull,5000)
+				return
+			end
+		end
 		for k,v in pairs(Config.GiveItem) do
 			if vRP.hasPermission(user_id, Config.Permissions.Bennys) or vRP.hasPermission(user_id, Config.Permissions.SportRace) then
 				if v == Config.GiveItem.Mecanicas then
