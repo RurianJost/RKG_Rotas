@@ -6,15 +6,14 @@ author 'Rurian Jost'
 version '1.0'
 
 shared_script {
-	'Config/*',
-}
-
-client_scripts {
 	'@vrp/lib/utils.lua',
-	'Client/*',
+	'shared/*',
 }
 
 server_scripts {
-	'@vrp/lib/utils.lua',
-	'Server/*',
+	'src/server/*.lua',
+}
+
+client_scripts {
+	'src/client/*.lua',
 }
