@@ -2,10 +2,10 @@
 
 Script de Rotas/Farm Open Source
 
-**Função:** Rota de Farm por comando, Configuravel
+**Função:** Rota de Farm por blip, Configuravel
 
 **O que da pra configurar pelo config.lua?**
-Nome do comando, Permissões, Cordenadas, Itens, Notify, Entre Outros.
+Permissões, Cordenadas, Itens, Notify, Entre Outros.
 
 **Suporte em nosso discord!**
 
