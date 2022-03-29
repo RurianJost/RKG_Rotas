@@ -11,8 +11,8 @@ Config_Rotas = {
             ["Perm"] = "bennys.permissao", -- Perissão para iniciar a rota.
             ["Locale"] = vector3( -224.96084594727, -1339.8135986328, 30.8939037323 ), -- Local do blip para iniciar a rota.
             ["Itens"] = {
-                "celular", -- Nome do Item.
-                "roupas", -- Nome do Item.
+                "elastic", -- Nome do Item.
+                "emptybottle", -- Nome do Item.
                 ["Quantity"] = {1,2}, -- Quantidade que virá, ao Apertar E no Blip (Minimo,Maximo).
             },
             ["BlipRoutes"] = {
