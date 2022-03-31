@@ -40,7 +40,6 @@ function oRP.paymentMethod(org_name)
 				local name_item = orgs_itens[random_item]
 				local amount_item = orgs_itens.Quantity
 				vRP.giveInventoryItem(user_id,name_item,math.random(amount_item[1],amount_item[2]))
-				TriggerClientEvent("itensNotify",source,"sucesso","Pegou",""..vRP.itemIndexList(name_item).."",""..vRP.format(parseInt(amount_item)).."",""..vRP.format(vRP.getItemWeight(name_item)*parseInt(amount_item)).."")
 				return
 			end
 		end
