@@ -5,7 +5,6 @@ vRPclient = Tunnel.getInterface("vRP")
 
 Config_Rotas = {
     ["Creative"] = false, -- se sua base for 'creative' deixe true, caso não seje deixe false.
-    ["Command"] = "rotas", -- Iniciar a Rota
     ["Orgs"] = {
         ["Bennys"] = {
             ["Perm"] = "bennys.permissao", -- Perissão para iniciar a rota.
@@ -13,7 +12,7 @@ Config_Rotas = {
             ["Itens"] = {
                 "elastic", -- Nome do Item.
                 "emptybottle", -- Nome do Item.
-                ["Quantity"] = {1,2}, -- Quantidade que virá, ao Apertar E no Blip (Minimo,Maximo).
+                ["Quantity"] = {3,10}, -- Quantidade que virá, ao Apertar E no Blip (Minimo,Maximo).
             },
             ["BlipRoutes"] = {
                 vector3( -1179.0146484375, -2047.6497802734, 13.938519477844 ), -- CDS dos Blips, Após ter iniciado a Rota.
