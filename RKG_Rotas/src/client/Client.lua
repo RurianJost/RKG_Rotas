@@ -18,9 +18,9 @@ Citizen.CreateThread(function()
                 local distance = #(coords - v.Locale)
                 if distance <= 10 then
                     timeDistance = 4
-                    DrawMarker(21,v.Locale ,0,0,0,0.0,0,0,0.5,0.5,0.4,255,0,0,50,0,0,0,1)
+                    DrawMarker(21,v.Locale.x,v.Locale.y,v.Locale.z - 0.60,0,0,0,0.0,0,0,0.5,0.5,0.4,255,0,0,50,0,0,0,1)
                     if distance <= 2 then
-                        if IsControlJustPressed(1,38) and vSERVER.CheckPerm(k) then
+                        if IsControlJustPressed(1,38) and vSERVER.CheckPerm(k) and not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 then
                             in_service = true
                             blip_rotas = v.BlipRoutes
                             position = 1
@@ -47,7 +47,7 @@ Citizen.CreateThread(function()
                 timeDistance = 4
                 DrawMarker(21,blip_rotas[position],0,0,0,0.0,0,0,0.5,0.5,0.4,255,0,0,50,0,0,0,1)
                 if distance <= 2 then
-                    if IsControlJustPressed(1,38) and time_seconds <= 0 then
+                    if IsControlJustPressed(1,38) and time_seconds <= 0 and not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 then
                         time_seconds = 2
                         if position == #blip_rotas then
                             position = 1
@@ -91,7 +91,7 @@ Citizen.CreateThread(function()
 		local idle = 1000
 		if in_service then
 			idle = 5
-			if IsControlJustPressed(1,121) then
+			if IsControlJustPressed(1,168) then
 				in_service = false
                 route_name = nil
                 position = 1
