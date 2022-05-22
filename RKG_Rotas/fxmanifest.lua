@@ -8,6 +8,7 @@ version '1.0'
 shared_script {
 	'@vrp/lib/utils.lua',
 	'shared/*',
+	'config/*',
 }
 
 server_scripts {
