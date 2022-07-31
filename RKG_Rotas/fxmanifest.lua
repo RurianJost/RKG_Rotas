@@ -3,18 +3,21 @@ game 'gta5'
 
 name 'RKG Rotas'
 author 'Rurian Jost'
-version '1.0'
+discord 'https://dsc.gg/rkgstore'
+version '1.0.2'
 
 shared_script {
 	'@vrp/lib/utils.lua',
+	'config/config.lua',
 	'shared/*',
-	'config/*',
 }
 
 server_scripts {
+	"config/sv_func.lua",
 	'src/server/*.lua',
 }
 
 client_scripts {
+	"config/cl_func.lua",
 	'src/client/*.lua',
 }
