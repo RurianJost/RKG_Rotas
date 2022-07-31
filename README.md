@@ -7,6 +7,8 @@ Script de Rotas/Farm Open Source
 **O que da pra configurar pelo config.lua?**
 Permissões, Cordenadas, Itens, Notify, Entre Outros.
 
+**Compatibilidade:** Compativel com varias bases... Basta configurar no "config/sv_func.lua"!
+
 **Suporte em nosso discord!**
 
 <a href="https://youtu.be/6-ys75FN2AE"><img  alt="Logo do Youtube" src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white"></a>
