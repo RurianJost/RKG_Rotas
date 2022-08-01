@@ -93,8 +93,8 @@ Citizen.CreateThread(function()
                     if IsControlJustPressed(1,38) and time_seconds <= 0 and not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 then
                         time_seconds = 2
                         setNextPositionBlip()
-                        vSERVER.receiveItems(route_name)
                         animRoute()
+                        vSERVER.receiveItems(route_name)
                         createBlipsPosition(blip_rotas,position)
                     end
                 end
@@ -107,12 +107,12 @@ end)
 -- Set Next Blip
 --------------------------------
 function animRoute()
+    local ped = PlayerPedId()
     TriggerEvent("cancelando",true)
     CL_Config.animRoute()
-    Citizen.Wait(2000)
+    Wait(5000)
     TriggerEvent("cancelando",false)
-    vRP._stopAnim(false)
-    vRP._removeObjects()
+    ClearPedTasks(ped)
 end
 --------------------------------
 -- Set Next Blip
