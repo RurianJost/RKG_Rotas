@@ -1,23 +1,25 @@
 fx_version 'bodacious'
 game 'gta5'
 
-name 'RKG Rotas'
+name 'RKG_Rotas'
 author 'Rurian Jost'
 discord 'https://dsc.gg/rkgstore'
-version '1.0.2'
+version '2.0.1'
 
 shared_script {
-	'@vrp/lib/utils.lua',
-	'config/config.lua',
-	'shared/*',
+	'@vrp/lib/utils.lua', 
+
+	'config/config.lua'
 }
 
 server_scripts {
-	"config/sv_func.lua",
-	'src/server/*.lua',
+	'config/server/*.lua', 
+
+	'server/*.lua'
 }
 
 client_scripts {
-	"config/cl_func.lua",
-	'src/client/*.lua',
+	'config/client/*.lua', 
+
+	'client/*.lua'
 }
