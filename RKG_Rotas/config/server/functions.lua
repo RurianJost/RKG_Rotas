@@ -33,7 +33,7 @@ serverConfig = {
     end, 
 
     getInventoryMaxWeight = function(userId)
-        return vRP.getInventoryMaxWeight(userId) or vRP.getBackpack(userId) or vRP.getWeight(userId) or vRP.InventoryFull(userId)
+        return vRP.getInventoryMaxWeight(userId) or vRP.getBackpack(userId) or vRP.getWeight(userId) or vRP.GetWeight(userId)
     end, 
 
     giveInventoryItem = function(userSource, itemName, itemAmount)
