@@ -14,8 +14,9 @@ function api.giveRouteItems(routeName)
 	local selectedRoute = CONFIG.ROUTES[routeName]
 	
 	if selectedRoute then
+		local routeItems = selectedRoute.ITEMS
+		
 		if selectedRoute.RANDOM_ITEMS then
-			local routeItems = selectedRoute.ITEMS
 			local selectedItem = math.random(#routeItems)
 			
 			local itemName = routeItems[selectedItem].NAME
